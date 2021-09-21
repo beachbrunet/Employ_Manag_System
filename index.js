@@ -16,20 +16,90 @@ const something = placeholder;
 const somethingsomething = placeholder2;
 
 // connect to db
-const db = mysql.createConnection(
-  {
-    host: "localhost",
-    port: 3301,
-    // (your) SQL Username,
-    user: "root",
-    // (your) SQL Password
-    password: "",
-    database: "employee_db",
-  },
-  console.log(`Connected to the employee_db database.`)
-);
-
-connection.connect(function (err) {
+const db = mysql.createConnection({
+  host: "localhost",
+  port: 3301,
+  // (your) SQL Username,
+  user: "root",
+  // (your) SQL Password
+  password: "",
+  database: "employee_db",
+});
+// double check this
+connection.connect((err) => {
   if (err) throw err;
   console.log("Successfully connected");
 });
+
+// need a prompt for user
+// choose to view all departments
+// I choose to view all roles
+// I choose to view all employees
+// I choose to add a department
+// I choose to add a role
+// I am prompted to enter the name, salary, and department for the role and that role is added to the database
+// WHEN I choose to add an employee
+// THEN I am prompted to enter the employee’s first name, last name, role, and manager, and that employee is added to the database
+// WHEN I choose to update an employee role
+// THEN I am prompted to select an employee to update and their new role and this information is updated in the database
+
+
+const questions = () =>{
+    return inquirer.prompt([
+{   type: 'list',
+    name:'',
+    message: 'What would you like to get started on?',
+    choices: [
+    "View all Departments",
+    "View all Employee Roles",
+    "View all Employees",
+    "Add a Department",
+    "View a Department",
+    "Add a Department",
+    "Add a Role",
+    "Add an Employee",
+    "Remove an Employee",
+    "Update an Employee",
+    "I am done for now.",
+    ]},
+];
+
+// long loop
+function start() {
+inquirer.prompt(startQuestions).then(data => {
+    console.log(data);
+    if (placeholder === 'View all Departments') {
+        getAllEmployees();
+    }
+    if (placeholder === 'View all Departments') {
+        getAllEmployees();
+    }
+    if (placeholder === 'View all Departments') {
+        getAllEmployees();
+    }
+    if (placeholder === 'View all Departments') {
+        getAllEmployees();
+    }
+    if (placeholder === 'View all Departments') {
+        getAllEmployees();
+    }
+    if (placeholder === 'View all Departments') {
+        getAllEmployees();
+    }
+    if (placeholder === 'View all Departments') {
+        getAllEmployees();
+    }
+    if (placeholder === 'View all Departments') {
+        getAllEmployees();
+    }
+    if (placeholder === 'I am done for now.') {
+        connection();
+    }
+
+  });
+
+}
+
+// view all employees in the database
+
+// get values
