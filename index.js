@@ -43,63 +43,71 @@ connection.connect((err) => {
 // WHEN I choose to update an employee role
 // THEN I am prompted to select an employee to update and their new role and this information is updated in the database
 
+// prompts
+const questions = () => {
+  return inquirer.prompt([
+    {
+      type: "list",
+      name: "",
+      message: "What would you like to get started on?",
+      choices: [
+        "View all Departments",
+        "View all Roles",
+        "View all Employees",
+        "Add a Department",
+        "Add a Role",
+        "Add an Employee",
+        // This might not be needed
+        "Remove an Employee",
+        "Update an Employee",
+        "I am done for now.",
+      ],
+    },
+  ]);
 
-const questions = () =>{
-    return inquirer.prompt([
-{   type: 'list',
-    name:'',
-    message: 'What would you like to get started on?',
-    choices: [
-    "View all Departments",
-    "View all Employee Roles",
-    "View all Employees",
-    "Add a Department",
-    "View a Department",
-    "Add a Department",
-    "Add a Role",
-    "Add an Employee",
-    "Remove an Employee",
-    "Update an Employee",
-    "I am done for now.",
-    ]},
-];
+  // long loop
+  function startQuestions() {
+    inquirer
+      .prompt(questions)
+      .then((data) => {
+        console.log(data);
+        const answers = data;
 
-// long loop
-function start() {
-inquirer.prompt(startQuestions).then(data => {
-    console.log(data);
-    if (placeholder === 'View all Departments') {
-        getAllEmployees();
-    }
-    if (placeholder === 'View all Departments') {
-        getAllEmployees();
-    }
-    if (placeholder === 'View all Departments') {
-        getAllEmployees();
-    }
-    if (placeholder === 'View all Departments') {
-        getAllEmployees();
-    }
-    if (placeholder === 'View all Departments') {
-        getAllEmployees();
-    }
-    if (placeholder === 'View all Departments') {
-        getAllEmployees();
-    }
-    if (placeholder === 'View all Departments') {
-        getAllEmployees();
-    }
-    if (placeholder === 'View all Departments') {
-        getAllEmployees();
-    }
-    if (placeholder === 'I am done for now.') {
-        connection();
-    }
+        if (answers === "View all Departments") {
+          showAllDepartments();
+        }
+        if (answers === "View all Employee Roles") {
+          showAllEmployeeRoles();
+        }
+        if (answers === "View all Employees") {
+          showAllEmployees();
+        }
+        if (answers === "Add a Department") {
+          addDepartment();
+        }
+        if (answers === "Add a Role") {
+          addRole();
+        }
+        if (answers === "Add an Employee") {
+          addEmployee();
+        }
+        if (answers === "Remove an Employee") {
+          removeEmployee();
+        }
+        if (answers === "Update an Employee") {
+          updateEmployee();
+        }
+        if (answers === "I am done for now.") {
+          connection.end();
+        }
+      })
+      .catch((err) => {
+        if (err) {
+          console.log(err);
+        }
+      });
+  }
 
-  });
-
-}
-
-// view all employees in the database
-
+  // view all employees in the database
+};
 // get values
