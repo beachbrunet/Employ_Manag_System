@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/beachbrunet/Employ_Manag_System/issues"
   },
-  "homepage": "https://github.com/beachbrunet/Employ_Manag_System#readme"
+  "homepage": "https://github.com/beachbrunet/Employ_Manag_System#readme",
+  "dependencies": {
+    "mysql2": "^2.3.0"
+  }
 }
