@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/beachbrunet/Employ_Manag_System#readme",
   "dependencies": {
+    "inquirer": "^8.1.5",
     "mysql2": "^2.3.0"
   }
 }

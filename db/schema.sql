@@ -1,5 +1,10 @@
 DROP DATABASE IF EXISTS employee_db;
 create DATABASE employee_db;
+USE employee_db;
+-- need 3 tables
+CREATE Table valuePlaceholder();
+CREATE Table ();
+CREATE Table ();
 -- -- create 3 tables
 -- department
 -- id: INT PRIMARY KEY
