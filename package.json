@@ -1,0 +1,19 @@
+{
+  "name": "employ_manag_system",
+  "version": "1.0.0",
+  "description": "## Requirements",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/beachbrunet/Employ_Manag_System.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/beachbrunet/Employ_Manag_System/issues"
+  },
+  "homepage": "https://github.com/beachbrunet/Employ_Manag_System#readme"
+}
