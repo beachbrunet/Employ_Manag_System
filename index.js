@@ -107,6 +107,26 @@ const questions = () => {
         }
       });
   }
+// function for the employees
+function showAllDepartments () {
+  blah blah;
+}
+
+
+function showAllEmployees () {
+  blah blah;
+}
+
+
+function showAllEmployeeRoles () {
+  blah blah;
+}
+
+
+
+
+
+
 
   // view all employees in the database
 };
