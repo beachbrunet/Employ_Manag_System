@@ -3,16 +3,17 @@ DROP DATABASE IF EXISTS employee_db;
 create DATABASE employee_db;
 USE employee_db;
 -- need 3 tables roles, employees, department, role, employment
-CREATE Table roles(
-    VARCHAR(30) NOT NULL
-);
-CREATE Table employees(
-    VARCHAR(30) NOT NULL
-);
-CREATE Table departments(
-    VARCHAR(30) NOT NULL
-);
-
+CREATE Table roles(VARCHAR(30) NOT NULL);
+CREATE Table employees(VARCHAR(30) NOT NULL);
+CREATE Table departments(VARCHAR(30) NOT NULL);
+-- Example code
+-- CREATE TABLE favorite_books (
+--   id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+--   section INT NOT NULL,
+--   book_name VARCHAR(30) NOT NULL,
+--   in_stock BOOLEAN,
+--   quantity INT NOT NULL
+-- );
 -- -- create 3 tables
 -- department
 -- id: INT PRIMARY KEY

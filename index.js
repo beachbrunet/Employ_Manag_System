@@ -107,26 +107,18 @@ const questions = () => {
         }
       });
   }
-// function for the employees
-function showAllDepartments () {
-  blah blah;
-}
+  // function for the employees
+  function showAllDepartments() {
+    blahblah;
+  }
 
+  function showAllEmployees() {
+    blahblah;
+  }
 
-function showAllEmployees () {
-  blah blah;
-}
-
-
-function showAllEmployeeRoles () {
-  blah blah;
-}
-
-
-
-
-
-
+  function showAllEmployeeRoles() {
+    blahblah;
+  }
 
   // view all employees in the database
 };
