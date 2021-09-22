@@ -44,7 +44,7 @@ console.log(`
 // connect to db
 const db = mysql.createConnection({
   host: "localhost",
-  port: 3301,
+  port: 3306,
   // (your) SQL Username,
   user: "root",
   // (your) SQL Password
@@ -68,8 +68,6 @@ db.connect((err) => {
 // THEN I am prompted to enter the employee’s first name, last name, role, and manager, and that employee is added to the database
 // WHEN I choose to update an employee role
 // THEN I am prompted to select an employee to update and their new role and this information is updated in the database
-
-// add figlet
 
 // prompts
 const questions = () => {
