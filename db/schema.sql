@@ -39,7 +39,7 @@ CREATE Table department(
 --
 --
 --need decminal
-CREATE Table role (
+CREATE Table roles (
   id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   title VARCHAR(30) NOT NULL,
   salary VARCHAR(30) NOT NULL,

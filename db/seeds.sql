@@ -14,7 +14,7 @@ VALUES
   --
   -- table 2 -- role: id, title varchar(30), salary DECIMAL, depart-id.
 INSERT INTO
-  role (title, salary, department_id)
+  roles (title, salary, department_id)
 VALUES
   ("Software Developer", 100000, 1),
   ("Web Developer", 75000, 2),
@@ -30,7 +30,7 @@ INSERT INTO
   employee (id, first_name, last_name, role_id, manager_id)
 VALUES
   ('Catherine', 'Cox', 001, NULL),
-  ('DR. Jan', 'ITOR', 003, 001),
+  ('DR. Jan', 'Itor', 003, 001),
   ('Elliot', 'Reeds', 002, 002),
   ('JD', Null, 002, 003),
   ('Turk', 'Turkleton', 004, NULL),

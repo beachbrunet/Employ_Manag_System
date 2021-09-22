@@ -15,6 +15,32 @@ const mysql = require("mysql2");
 // const something = placeholder;
 // const somethingsomething = placeholder2;
 
+// did a thing here
+console.log(`
+/$$$$$$$$                         /$$                                              
+| $$_____/                        | $$                                              
+| $$       /$$$$$$/$$$$   /$$$$$$ | $$  /$$$$$$  /$$   /$$  /$$$$$$   /$$$$$$       
+| $$$$$   | $$_  $$_  $$ /$$__  $$| $$ /$$__  $$| $$  | $$ /$$__  $$ /$$__  $$      
+| $$__/   | $$ \ $$ \ $$| $$  \ $$| $$| $$  \ $$| $$  | $$| $$$$$$$$| $$$$$$$$      
+| $$      | $$ | $$ | $$| $$  | $$| $$| $$  | $$| $$  | $$| $$_____/| $$_____/      
+| $$$$$$$$| $$ | $$ | $$| $$$$$$$/| $$|  $$$$$$/|  $$$$$$$|  $$$$$$$|  $$$$$$$      
+|________/|__/ |__/ |__/| $$____/ |__/ \______/  \____  $$ \_______/ \_______/      
+                       | $$                     /$$  | $$                          
+                       | $$                    |  $$$$$$/                          
+                       |__/                     \______/                           
+/$$      /$$                                                                       
+| $$$    /$$$                                                                       
+| $$$$  /$$$$  /$$$$$$  /$$$$$$$   /$$$$$$   /$$$$$$   /$$$$$$   /$$$$$$            
+| $$ $$/$$ $$ |____  $$| $$__  $$ |____  $$ /$$__  $$ /$$__  $$ /$$__  $$           
+| $$  $$$| $$  /$$$$$$$| $$  \ $$  /$$$$$$$| $$  \ $$| $$$$$$$$| $$  \__/           
+| $$\  $ | $$ /$$__  $$| $$  | $$ /$$__  $$| $$  | $$| $$_____/| $$                 
+| $$ \/  | $$|  $$$$$$$| $$  | $$|  $$$$$$$|  $$$$$$$|  $$$$$$$| $$                 
+|__/     |__/ \_______/|__/  |__/ \_______/ \____  $$ \_______/|__/                 
+                                           /$$  \ $$                               
+                                          |  $$$$$$/                               
+                                           \______/                                
+`);
+
 // connect to db
 const db = mysql.createConnection({
   host: "localhost",
@@ -22,7 +48,7 @@ const db = mysql.createConnection({
   // (your) SQL Username,
   user: "root",
   // (your) SQL Password
-  password: "",
+  password: "Iloveaxle1",
   database: "employee_db",
 });
 // double check this
@@ -53,21 +79,19 @@ const questions = () => {
       name: "",
       message: "What would you like to get started on?",
       choices: [
-        "View all Departments",
-        "View all Roles",
-        "View all Employees",
-        "Add a Department",
-        "Add a Role",
-        "Add an Employee",
-        // This might not be needed
-        "Remove an Employee",
-        "Update an Employee",
-        "I am done for now.",
+        { name: "View all Departments", value: "veiw_deps" },
+        { name: "View all Roles", value: "veiw_roles" },
+        { name: "View all Employees", value: "veiw_emp" },
+        { name: "Add a Department", value: "add_depart" },
+        { name: "Add a Role", value: "add_role" },
+        { name: "Add an Employee", value: "add_emp" },
+        { name: "Remove an Employee", value: "remove_emp" },
+        { name: "Update an Employee", value: "update_emp" },
+        { name: "I am done", value: "quit" },
       ],
     },
   ]);
 
-  // long loop
   function startQuestions() {
     inquirer
       .prompt(questions)
@@ -75,28 +99,28 @@ const questions = () => {
         console.log(data);
         const answers = data;
 
-        if (answers === "View all Departments") {
+        if (answers === "veiw_deps") {
           showAllDepartments();
         }
-        if (answers === "View all Employee Roles") {
+        if (answers === "veiw_roles") {
           showAllEmployeeRoles();
         }
-        if (answers === "View all Employees") {
+        if (answers === "veiw_emp") {
           showAllEmployees();
         }
-        if (answers === "Add a Department") {
+        if (answers === "add_depart") {
           addDepartment();
         }
-        if (answers === "Add a Role") {
+        if (answers === "add_roles") {
           addRole();
         }
-        if (answers === "Add an Employee") {
+        if (answers === "add_emp") {
           addEmployee();
         }
-        if (answers === "Remove an Employee") {
+        if (answers === "remove_emp") {
           removeEmployee();
         }
-        if (answers === "Update an Employee") {
+        if (answers === "update_emp") {
           updateEmployee();
         }
         if (answers === "I am done for now.") {
@@ -110,19 +134,25 @@ const questions = () => {
       });
   }
 
+  function runSelect(sql) {
+    db.query(sql, function (err, results) {
+      console.log(results);
+    });
+  }
+
   // function for viewing Depart
   function showAllDepartments() {
-    blahblah;
+    runSelect("select * from department");
   }
 
   // function for viewing employees
   function showAllEmployees() {
-    blahblah;
+    runSelect("select * from employee");
   }
 
   // function for viewing roles
   function showAllEmployeeRoles() {
-    blahblah;
+    runSelect("select * from roles");
   }
 
   // add fucntions for
@@ -131,7 +161,6 @@ const questions = () => {
   // Remove an Employee
   // Update an Employee
 };
-// get values
 
 // async function SendWelcome(user) {
 //   const serverRoom = GetRoom();
