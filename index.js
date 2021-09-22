@@ -48,7 +48,6 @@ const db = mysql.createConnection({
   password: "Iloveaxle1" /*(make sure to change this) */,
   database: "employee_db",
 });
-// double check this
 db.connect((err) => {
   if (err) throw err;
   console.log("Successfully connected");
@@ -128,7 +127,7 @@ function startQuestions() {
 // Query database --makes code more dry
 function runSelect(sql) {
   db.query(sql, function (err, results) {
-    console.log(results);
+    console.table(results);
     startQuestions();
   });
 }
@@ -141,18 +140,22 @@ function showAllDepartments() {
     };
 }
 
-// function for viewing employees
+// function for viewing employees // employee (id, first_name, last_name, role_id, manager_id)
 function showAllEmployees() {
   runSelect("select * from employee"),
     function (error, results) {
       if (error) throw error;
+      const worker = result.map((employee) => ({
+        value: employee.id,
+        name: employee.first_name + employee.last_name,
+      }));
     };
 }
 
 // function for viewing roles
 function showAllEmployeeRoles() {
   runSelect("select * from roles"),
-    function (error, results) {
+    function (error, result) {
       if (error) throw error;
       const roles = result.map((roles) => ({
         value: roles.id,
@@ -181,4 +184,36 @@ function showAllEmployeeRoles() {
   //   res.status(404).end();
   // });
 }
+
+// writing prmopts
+// prompt()
+// {
+//   type: "input",
+//   message: "What is the new employee's first name?",
+//   name: "first_name",
+// },
+// {
+//   type: "input",
+//   message: "What is the new employee's last name?",
+//   name: "last_name",
+// },
+// {
+//   type: "input",
+//   message: "What is the new employee's role?",
+//   name: "role_id",
+//   choices: roles,
+// },
+// {
+//   type: "list",
+//   name: "role_id"
+//   message: "What is the new employee's role?",
+//   choices: [
+//     "Sales",
+//     "Engineering",
+//     "Quaility Insurence",
+//     "Finance",
+//     "HR",
+//   ]
+// }
+
 // startQuestions();
