@@ -65,6 +65,10 @@ db.connect((err) => {
 // WHEN I choose to update an employee role
 // THEN I am prompted to select an employee to update and their new role and this information is updated in the database
 
+// error thing
+// function (error, results) {
+//   if (error) throw error;
+
 // prompts
 const questions = () => {
   return inquirer.prompt([
@@ -201,21 +205,31 @@ function showAllEmployeeRoles() {
 
 // add Department -- department (id, depart_name)
 const addDepart = () => {
-  return inquirer.prompt([
-{
-  type: "input",
-  name: "depart_name",
-  message: "What is the department you would like to add?",
-  validate: answer => {
-    if (answer!==""){
-    return true;
-     }
-      return "please enter a valid name";
-    }
-  },
-
-
-
+  return inquirer
+    .prompt([
+      {
+        type: "input",
+        name: "depart_name",
+        message: "What is the department you would like to add?",
+        validate: (answer) => {
+          if (answer !== "") {
+            return true;
+          }
+          return "Please enter a valid statement.";
+        },
+      },
+    ])
+    .then((answer) => {
+      let results = connection.query(
+        "INSERT INTO depertment SET dept_name = ?",
+        [answers.dept_name],
+        function (error, results) {
+          if (error) throw error;
+          console.log("Successfully added a department");
+        }
+      );
+    });
+};
 
 // // writing promts
 // const addEmployee = () => {
@@ -241,7 +255,6 @@ const addDepart = () => {
 //     "Finance",
 //     "HR",
 // },
-
 
 // {
 //   type: "input",
@@ -284,16 +297,6 @@ const addDepart = () => {
 
 // // update employee
 
-
 // // remove employee
-
-
-
-
-
-
-
-
-
 
 // startQuestions();
