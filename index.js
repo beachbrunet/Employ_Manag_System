@@ -1,8 +1,5 @@
 // MVP
 
-// Needs
-// mySQL2 package - npm i mysql2
-
 // Important: You will be committing a file that contains your database credentials.
 // Make sure that your MySQL password is not used for any other personal accounts,
 // because it will be visible on GitHub. In upcoming lessons,
@@ -48,7 +45,7 @@ const db = mysql.createConnection({
   // (your) SQL Username,
   user: "root",
   // (your) SQL Password
-  password: "Iloveaxle1",
+  password: "Iloveaxle1" /*(make sure to change this) */,
   database: "employee_db",
 });
 // double check this
@@ -91,9 +88,7 @@ const questions = () => {
   ]);
 
   function startQuestions() {
-    inquirer
-      .prompt(questions)
-      .then((data) => {
+    inquirer.prompt(questions.then((data) => {
         console.log(data);
         const answers = data;
 
@@ -132,9 +127,11 @@ const questions = () => {
       });
   }
 
+  // Query database --makes code more dry
   function runSelect(sql) {
     db.query(sql, function (err, results) {
       console.log(results);
+      startQuestions();
     });
   }
 
@@ -160,12 +157,15 @@ const questions = () => {
   // Update an Employee
 };
 
-// async function SendWelcome(user) {
-//   const serverRoom = GetRoom();
-//   const normalized_nick = user.nick.replace(/[^\d\w]/, ' ');
-//   const message = '```\n'+ await Figlet.textAsync('Hi ' + normalized_nick, {
-//     font: 'The Edge'
-//   }) + '\n```';
+
+
+
+
+// Default response for any other request (Not Found)
+app.use((req, res) => {
+  res.status(404).end();
+});
+
 
 //   user.send(JSONMessage.fromObject({
 //     '@': serverRoom.roomName,
