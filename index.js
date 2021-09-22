@@ -12,8 +12,8 @@
 // variables
 const inquirer = require("inquirer");
 const mysql = require("mysql2");
-const something = placeholder;
-const somethingsomething = placeholder2;
+// const something = placeholder;
+// const somethingsomething = placeholder2;
 
 // connect to db
 const db = mysql.createConnection({
@@ -26,7 +26,7 @@ const db = mysql.createConnection({
   database: "employee_db",
 });
 // double check this
-connection.connect((err) => {
+db.connect((err) => {
   if (err) throw err;
   console.log("Successfully connected");
 });
@@ -42,6 +42,8 @@ connection.connect((err) => {
 // THEN I am prompted to enter the employee’s first name, last name, role, and manager, and that employee is added to the database
 // WHEN I choose to update an employee role
 // THEN I am prompted to select an employee to update and their new role and this information is updated in the database
+
+// add figlet
 
 // prompts
 const questions = () => {
@@ -107,19 +109,41 @@ const questions = () => {
         }
       });
   }
-  // function for the employees
+
+  // function for viewing Depart
   function showAllDepartments() {
     blahblah;
   }
 
+  // function for viewing employees
   function showAllEmployees() {
     blahblah;
   }
 
+  // function for viewing roles
   function showAllEmployeeRoles() {
     blahblah;
   }
 
-  // view all employees in the database
+  // add fucntions for
+  // Add a Department
+  // Add an Employee
+  // Remove an Employee
+  // Update an Employee
 };
 // get values
+
+// async function SendWelcome(user) {
+//   const serverRoom = GetRoom();
+//   const normalized_nick = user.nick.replace(/[^\d\w]/, ' ');
+//   const message = '```\n'+ await Figlet.textAsync('Hi ' + normalized_nick, {
+//     font: 'The Edge'
+//   }) + '\n```';
+
+//   user.send(JSONMessage.fromObject({
+//     '@': serverRoom.roomName,
+//     '!id': genId(),
+//     'utc_timestamp': new Date().getTime(),
+//     'msg': message
+//   }));
+// }

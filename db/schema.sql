@@ -3,9 +3,9 @@ DROP DATABASE IF EXISTS employee_db;
 create DATABASE employee_db;
 USE employee_db;
 -- need 3 tables roles, employees, department, role, employment
-CREATE Table roles(VARCHAR(30) NOT NULL);
-CREATE Table employees(VARCHAR(30) NOT NULL);
-CREATE Table departments(VARCHAR(30) NOT NULL);
+CREATE Table department(VARCHAR(30) NOT NULL);
+CREATE Table role (VARCHAR(30) NOT NULL);
+CREATE Table employee (VARCHAR(30) NOT NULL);
 -- Example code
 -- CREATE TABLE favorite_books (
 --   id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
