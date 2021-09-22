@@ -86,46 +86,43 @@ const questions = () => {
       ],
     },
   ]);
+}
 
-  function startQuestions() {
-    inquirer.prompt(questions.then((data) => {
-        console.log(data);
-        const answers = data;
+function startQuestions() {
+  inquirer.prompt(questions.then((data) => {
+  console.log(data);
+  const answers = data;
 
-        if (answers === "veiw_deps") {
-          showAllDepartments();
-        }
-        if (answers === "veiw_roles") {
-          showAllEmployeeRoles();
-        }
-        if (answers === "veiw_emp") {
-          showAllEmployees();
-        }
-        if (answers === "add_depart") {
-          addDepartment();
-        }
-        if (answers === "add_roles") {
-          addRole();
-        }
-        if (answers === "add_emp") {
-          addEmployee();
-        }
-        if (answers === "remove_emp") {
-          removeEmployee();
-        }
-        if (answers === "update_emp") {
-          updateEmployee();
-        }
-        if (answers === "I am done for now.") {
-          connection.end();
-        }
-      })
-      .catch((err) => {
-        if (err) {
-          console.log(err);
-        }
-      });
+  if (answers === "veiw_deps") {
+    showAllDepartments();
   }
+  if (answers === "veiw_roles") {
+    showAllEmployeeRoles();
+  }
+  if (answers === "veiw_emp") {
+    showAllEmployees();
+  }
+  if (answers === "add_depart") {
+    addDepartment();
+  }
+  if (answers === "add_roles") {
+    addRole();
+  }
+  if (answers === "add_emp") {
+    addEmployee();
+  }
+  if (answers === "remove_emp") {
+    removeEmployee();
+  }
+  if (answers === "update_emp") {
+    updateEmployee();
+  }
+  if (answers === "I am done for now.") {
+          connection.end();
+  }
+// fix syntax
+  });
+}
 
   // Query database --makes code more dry
   function runSelect(sql) {
@@ -137,40 +134,48 @@ const questions = () => {
 
   // function for viewing Depart
   function showAllDepartments() {
-    runSelect("select * from department");
-  }
-
+    runSelect("select * from department"),
+    function (error, results) {
+      if (error) throw error;
+    }
+  };
+    
   // function for viewing employees
   function showAllEmployees() {
-    runSelect("select * from employee");
-  }
+    runSelect("select * from employee"),
+    function (error, results) {
+      if (error) throw error;
+    }  
+  };
+  
 
   // function for viewing roles
   function showAllEmployeeRoles() {
-    runSelect("select * from roles");
-  }
+    runSelect("select * from roles"),
+    function (error, results) {
+      if (error) throw error;
+    }
+  };
+
+
+
+
+
+
+
 
   // add fucntions for
   // Add a Department
   // Add an Employee
   // Remove an Employee
   // Update an Employee
-};
 
 
 
 
 
-// Default response for any other request (Not Found)
-app.use((req, res) => {
-  res.status(404).end();
-});
 
-
-//   user.send(JSONMessage.fromObject({
-//     '@': serverRoom.roomName,
-//     '!id': genId(),
-//     'utc_timestamp': new Date().getTime(),
-//     'msg': message
-//   }));
-// }
+// // Default response for any other request (Not Found)
+// app.use((req, res) => {
+//   res.status(404).end();
+// });
