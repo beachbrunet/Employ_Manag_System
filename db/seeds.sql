@@ -10,21 +10,36 @@ VALUES
   (" blah blah"),
   (" blah blah"),
   (" blah blah"),
+  --
+  --
+  --
   -- table 2
 INSERT INTO
   role (title, salary, department_id)
 VALUES
   ("Software Developer", 100000, 1),
-  (" blah blah"),
+  ("Web Developer", 75000, 2),
+  ("Database Admin", 150000, 4),
+  ("Software Quality Qssurance Engineer", 60000, 3),
+  ("Programer", 55000, 2),
+  --
+  --
+  --
+  --
   -- table 3
 INSERT INTO
   employee (id, first_name, last_name, role_id, manager_id)
 VALUES
-  (" blah blah"),
-  (" blah blah"),
-  (" blah blah"),
-  (" blah blah"),
-  (" blah blah"),
+  ('Catherine', 'Cox', 001, NULL),
+  ('DR. Jan', 'ITOR', 003, 001),
+  ('Elliot', 'Reeds', 002, 002),
+  ('JD', Null, 002, 003),
+  ('Turk', 'Turkleton', 004, NULL),
+  --
+  --
+  --
+  --
+  --
   -- example code
   -- INSERT INTO favorite_books (book_name, section, in_stock, quantity)
   -- VALUES ("The Great Gatsby", 1, true, 11),
