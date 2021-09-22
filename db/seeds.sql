@@ -1,19 +1,18 @@
 -- Need values
--- depart: id and name varchar(30)
--- role: id, title varchar(30), salary DECIMAL, depart-id.
+--
 -- employee: id, first_name varchar(30), LAST_NAME varchar(30), role_id INT, manager_id INT
-INSERT INTO
-  department (id, name)
+-- table 1 depart: id and name varchar(30)
+department (id, depart_name)
 VALUES
-  (" blah blah"),
-  (" blah blah"),
-  (" blah blah"),
-  (" blah blah"),
-  (" blah blah"),
+  ("1", "Sales"),
+  ("2", "Engineering"),
+  ("3", "Quaility Insurence"),
+  ("4", "Finance"),
+  ("5", "HR"),
   --
   --
   --
-  -- table 2
+  -- table 2 -- role: id, title varchar(30), salary DECIMAL, depart-id.
 INSERT INTO
   role (title, salary, department_id)
 VALUES
