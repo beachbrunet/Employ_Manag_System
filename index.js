@@ -53,9 +53,11 @@ const db = mysql.createConnection({
 db.connect((err) => {
   if (err) throw err;
   console.log("Successfully connected");
-
+  // this is not the best way but works
   initPrompt();
 });
+
+// write prompt
 
 // need a prompt for user
 // choose to view all departments
@@ -95,9 +97,9 @@ const questions = () => {
   ]);
 };
 
-function startQuestions() {
+function initPrompt() {
   inquirer.prompt(
-    questions.then((data) => {
+    questions().then((data) => {
       console.log(data);
       const answers = data;
 
@@ -228,9 +230,35 @@ const addEmployee = () => {
     });
 };
 
-// Add an Employee - need prompt
-
 // Remove an Employee
+const removeEmployee = () => {
+  return inquirer
+    .prompt({
+      type: "input",
+      name: "removeEmployeID",
+      message: "What is the id of the employee you would like to remove?",
+    })
+    .then((answers) => {
+      let results = connection.query(
+        "delete from employee WHERE id = ?",
+        function (error, results) {
+          if (error) throw error;
+          console.table(results);
+          initPrompt();
+        }
+      );
+    });
+};
+// update an employee
+// const updateEmployee = () => {
+//   {
+//     type: "input",
+//     name: "removeEmployeID",
+//     message: "What is the id of the employee you would like to remove?",
+//   },
+
+// }
+
 // Update an Employee
 
 //title, salary, department_id

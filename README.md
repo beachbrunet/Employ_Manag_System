@@ -57,7 +57,9 @@ npm i inquirer
 [console.table](https://www.npmjs.com/package/console.table),
 npm i console.table
 
-[MDN](https://developer.mozilla.org/en-US/docs/Web/API/console/table)
+[MDN](https://developer.mozilla.org/en-US/docs/Web/API/console/table),
+
+[w3Schools](https://www.w3schools.com/sql/sql_delete.asp),
 
 [Bobbie comic](https://www.explainxkcd.com/wiki/images/5/5f/exploits_of_a_mom.png)
 
