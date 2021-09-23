@@ -211,7 +211,7 @@ const addEmployee = () => {
     ])
     .then((answers) => {
       let results = connection.query(
-        "INSERT INTO employee SET first_name=?, last_name=?, rolle_id = ?, manager_id = ? ",
+        "insert into employee (first_name, last_name, role_id, manager_id) values (?,?,?,?)",
         [
           answers.first_name,
           answers.last_name,
