@@ -80,7 +80,7 @@ const questions = () => {
   return inquirer.prompt([
     {
       type: "list",
-      name: "",
+      name: "value",
       message: "What would you like to get started on?",
       choices: [
         { name: "View all Departments", value: "veiw_deps" },
@@ -98,47 +98,45 @@ const questions = () => {
 };
 
 function initPrompt() {
-  inquirer.prompt(
-    questions().then((data) => {
-      console.log(data);
-      const answers = data;
+  questions().then((data) => {
+    console.log(data);
+    const answers = data.value;
 
-      if (answers === "veiw_deps") {
-        showAllDepartments();
-      }
-      if (answers === "veiw_roles") {
-        showAllEmployeeRoles();
-      }
-      if (answers === "veiw_emp") {
-        showAllEmployees();
-      }
-      if (answers === "add_depart") {
-        addDepartment();
-      }
-      if (answers === "add_roles") {
-        addRole();
-      }
-      if (answers === "add_emp") {
-        addEmployee();
-      }
-      if (answers === "remove_emp") {
-        removeEmployee();
-      }
-      if (answers === "update_emp") {
-        updateEmployee();
-      }
-      if (answers === "I am done for now.") {
-        connection.end();
-      }
-    })
-  );
+    if (answers === "veiw_deps") {
+      showAllDepartments();
+    }
+    if (answers === "veiw_roles") {
+      showAllEmployeeRoles();
+    }
+    if (answers === "veiw_emp") {
+      showAllEmployees();
+    }
+    if (answers === "add_depart") {
+      addDepartment();
+    }
+    if (answers === "add_roles") {
+      addRole();
+    }
+    if (answers === "add_emp") {
+      addEmployee();
+    }
+    if (answers === "remove_emp") {
+      removeEmployee();
+    }
+    if (answers === "update_emp") {
+      updateEmployee();
+    }
+    if (answers === "I am done for now.") {
+      connection.end();
+    }
+  });
 }
 
 // Query database --makes code more dry
 function runSelect(sql) {
   db.query(sql, function (err, results) {
     console.table(results);
-    startQuestions();
+    initPrompt();
   });
 }
 
