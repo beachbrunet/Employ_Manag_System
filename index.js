@@ -10,8 +10,6 @@
 const fs = require("fs");
 const inquirer = require("inquirer");
 const mysql = require("mysql2");
-// const something = placeholder;
-// const somethingsomething = placeholder2;
 
 // did a thing here
 console.log(`
@@ -97,6 +95,7 @@ const questions = () => {
   ]);
 };
 
+// loop
 function initPrompt() {
   questions().then((data) => {
     console.log(data);
@@ -114,7 +113,7 @@ function initPrompt() {
     if (answers === "add_depart") {
       addDepartment();
     }
-    if (answers === "add_roles") {
+    if (answers === "add_role") {
       addRole();
     }
     if (answers === "add_emp") {
@@ -155,6 +154,7 @@ function showAllEmployees() {
 //   res.status(404).end();
 // });
 
+// DONE
 // add Department -- department (id, depart_name)
 // taking user input this way prevents sequal injection attacks -- (something I learned/ comic of exploits of a mom)
 const addDepartment = () => {
@@ -184,14 +184,58 @@ const addDepartment = () => {
       );
     });
 };
+// add Role -- roles table (id, title, salary)
+const addRole = () => {
+  return inquirer
+    .prompt([
+      {
+        type: "input",
+        name: "title",
+        message: "What the role you would like to add?",
+        validate: (answer) => {
+          if (answer !== "") {
+            return true;
+          }
+          return "please enter a valid name";
+        },
+      },
+      {
+        type: "input",
+        name: "title",
+        message: "What is the employee's title?",
+      },
 
-// add employee -- employee (id, first_name, last_name, role_id, manager_id)
+      {
+        type: "input",
+        name: "salary",
+        message: "What is the employee's salary?",
+      },
+      {
+        type: "input",
+        name: "department_id",
+        message: "What is the employee department ID?",
+      },
+    ])
+    .then((answers) => {
+      let results = db.execute(
+        "insert into roles (title, salary, department_id) values (?,?,?)",
+        [answers.id, answers.title, answers.salary, answers.department_id],
+
+        function (error, results) {
+          if (error) throw error;
+          console.table(results);
+          initPrompt();
+        }
+      );
+    });
+};
+// add employee -- employee table (id, first_name, last_name, role_id, manager_id)
 const addEmployee = () => {
   return inquirer
     .prompt([
       {
         type: "input",
-        name: "first_name",
+        name: "id",
         message: "What is the new employee's first name?",
       },
       {
@@ -248,6 +292,7 @@ const removeEmployee = () => {
       );
     });
 };
+
 // update an employee
 // const updateEmployee = () => {
 //   {
@@ -257,42 +302,5 @@ const removeEmployee = () => {
 //   },
 
 // }
-
-// Update an Employee
-
-//title, salary, department_id
-// const addRole = () => {
-//   return inquirer.prompt([
-//   {
-//   type: "input",
-//   name: "title",
-//   message: "What the role you would like to add?",
-//   validate: answer => {
-//     if (answer!==""){
-//     return true;
-//      }
-//       return "please enter a valid name";
-//     }
-//   },
-// {
-//     type: "input",
-//     name: "title",
-//     message: "What is the employee's title?",
-// },
-
-// {
-//   type: "input",
-//   name: "salary",
-//   message: "What is the employee's salary?",
-// },
-// {
-//   type: "input",
-//   name: "department_id",
-//   message: "What is the employee department ID?",
-// },
-
-// // update employee
-
-// // remove employee
 
 // startQuestions();
