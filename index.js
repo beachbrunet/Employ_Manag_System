@@ -7,6 +7,7 @@
 //  or you can start researching npm packages now that could help you.
 
 // variables
+const fs = require('fs')
 const inquirer = require("inquirer");
 const mysql = require("mysql2");
 // const something = placeholder;
@@ -232,68 +233,66 @@ const addDepart = () => {
 };
 
 // // writing promts
-// const addEmployee = () => {
-//   return inquirer.prompt([
-// {
-//   type: "input",
-//   name: "first_name",
-//   message: "What is the new employee's first name?",
-// },
-// {
-//   type: "input",
-//   name: "last_name",
-//   message: "What is the new employee's last name?",
-// },
-// {
-//   type: "input",
-//   name: "role",
-//   message: "What is the new employee's role?",
-//   choices:[
-//     "Sales",
-//     "Engineering",
-//     "Quaility Insurence",
-//     "Finance",
-//     "HR",
-// },
-
-// {
-//   type: "input",
-//   name: "role_id",
-//   message: "What is the new employee's manager id?",
-//   choices:
-//   ]
-// };
+const addEmployee = () => {
+  return inquirer.prompt([
+{
+  type: "input",
+  name: "first_name",
+  message: "What is the new employee's first name?",
+},
+{
+  type: "input",
+  name: "last_name",
+  message: "What is the new employee's last name?",
+},
+{
+  type: "input",
+  name: "role",
+  message: "What is the new employee's role?",
+  choices:[
+    "Sales",
+    "Engineering",
+    "Quaility Insurence",
+    "Finance",
+    "HR",
+  ]
+},
+{
+  type: "input",
+  name: "role_id",
+  message: "What is the new employee's manager id?",
+},
 
 // // title, salary, department_id
-// const addRole = () => {
-//   return inquirer.prompt([
-//   {
-//   type: "input",
-//   name: "title",
-//   message: "What the role you would like to add?",
-//   validate: answer => {
-//     if (answer!==""){
-//     return true;
-//      }
-//       return "please enter a valid name";
-//     }
-//   },
-// {
-//     type: "input",
-//     name: "title",
-//     message: "What is the employee's title?",
-// },
+const addRole = () => {
+  return inquirer.prompt([
+  {
+  type: "input",
+  name: "title",
+  message: "What the role you would like to add?",
+  validate: answer => {
+    if (answer!==""){
+    return true;
+     }
+      return "please enter a valid name";
+    }
+  },
+{
+    type: "input",
+    name: "title",
+    message: "What is the employee's title?",
+},
 
-// {
-//   type: "input",
-//   name: "salary",
-//   message: "What is the employee's salary?",
-// },
-// {
-//   type: "input",
-//   name: "department_id",
-//   message: "What is the employee department ID?",
-// },
+{
+  type: "input",
+  name: "salary",
+  message: "What is the employee's salary?",
+},
+{
+  type: "input",
+  name: "department_id",
+  message: "What is the employee department ID?",
+},
 
 // // update employee
 
