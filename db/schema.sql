@@ -30,7 +30,7 @@ CREATE Table department(
 CREATE Table roles (
   id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   title VARCHAR(30) NOT NULL,
-  salary DECIMAL(5, 2) NOT NULL,
+  salary DECIMAL UNSIGNED NOT NULL,
   department_id INT NOT NULL,
   -- ON DELETE CASCADE (if the department get deleted then the employees get deleted)
   FOREIGN KEY (department_id) REFERENCES department(id) ON DELETE CASCADE

@@ -1,5 +1,4 @@
 // MVP
-
 // Important: You will be committing a file that contains your database credentials.
 // Make sure that your MySQL password is not used for any other personal accounts,
 // because it will be visible on GitHub. In upcoming lessons,
@@ -56,7 +55,6 @@ db.connect((err) => {
 });
 
 // write prompt
-
 // need a prompt for user
 // choose to view all departments
 // I choose to view all roles
@@ -144,163 +142,160 @@ function showAllDepartments() {
   runSelect("select * from department");
 }
 
-// function for viewing employees // employee (id, first_name, last_name, role_id, manager_id)
-function showAllEmployees() {
-  runSelect("select * from employee");
+function showAllEmployeeRoles() {
+  runSelect("select * from roles");
+
+  // function for viewing employees // employee (id, first_name, last_name, role_id, manager_id)
+  function showAllEmployees() {
+    runSelect("select * from employee");
+  }
+
+  // // Default response for any other request (Not Found)
+  // app.use((req, res) => {
+  //   res.status(404).end();
+  // });
+
+  // DONE
+  // add Department -- department (id, depart_name)
+  // taking user input this way prevents sequal injection attacks -- (something I learned/ comic of exploits of a mom)
+  const addDepartment = () => {
+    return inquirer
+      .prompt([
+        {
+          type: "input",
+          name: "depart_name",
+          message: "What is the department you would like to add?",
+          validate: (answer) => {
+            if (answer !== "") {
+              return true;
+            }
+            return "Please enter a valid statement.";
+          },
+        },
+      ])
+      .then((answer) => {
+        let results = db.execute(
+          "insert into department (name) values (?)",
+          [answer.depart_name],
+          function (error, results) {
+            if (error) throw error;
+            console.log("Successfully added a department");
+            initPrompt();
+          }
+        );
+      });
+  };
+  // add Role -- roles table (id, title, salary)
+  const addRole = () => {
+    return inquirer
+      .prompt([
+        {
+          type: "input",
+          name: "title",
+          message: "What is the employee's title?",
+          validate: (answer) => {
+            if (answer !== "") {
+              return true;
+            }
+            return "please enter a valid name";
+          },
+        },
+        {
+          type: "input",
+          name: "salary",
+          message: "What is the employee's salary?",
+        },
+        {
+          type: "input",
+          name: "department_id",
+          message: "What is the employee department ID?",
+        },
+      ])
+      .then((answers) => {
+        let results = db.execute(
+          "insert into roles (title, salary, department_id) values (?,?,?)",
+          [answers.title, answers.salary, answers.department_id],
+
+          function (error, results) {
+            if (error) throw error;
+            console.table(results);
+            console.log("The Employee role has been added!");
+            initPrompt();
+          }
+        );
+      });
+  };
+  // add employee -- employee table (id, first_name, last_name, role_id, manager_id)
+  const addEmployee = () => {
+    return inquirer
+      .prompt([
+        {
+          type: "input",
+          name: "id",
+          message: "What is the new employee's first name?",
+        },
+        {
+          type: "input",
+          name: "last_name",
+          message: "What is the new employee's last name?",
+        },
+        {
+          type: "input",
+          name: "role_id",
+          message: "What is the new employee's role id?",
+        },
+        {
+          type: "input",
+          name: "manager_id",
+          message: "What is the new employee's manager id?",
+        },
+      ])
+      .then((answers) => {
+        let results = db.execute(
+          "insert into employee (first_name, last_name, role_id, manager_id) values (?,?,?,?)",
+          [
+            answers.first_name,
+            answers.last_name,
+            answers.role_id,
+            answers.manager_id,
+          ],
+
+          function (error, results) {
+            if (error) throw error;
+            console.table(results);
+            initPrompt();
+          }
+        );
+      });
+  };
+
+  // Remove an Employee
+  const removeEmployee = () => {
+    return inquirer
+      .prompt({
+        type: "input",
+        name: "removeEmployeID",
+        message: "What is the id of the employee you would like to remove?",
+      })
+      .then((answers) => {
+        let results = db.query(
+          "delete from employee WHERE id = ?",
+          function (error, results) {
+            if (error) throw error;
+            console.table(results);
+            console.log("Deleted the employee :(");
+            initPrompt();
+          }
+        );
+      });
+  };
 }
-
-// // Default response for any other request (Not Found)
-// app.use((req, res) => {
-//   res.status(404).end();
-// });
-
-// DONE
-// add Department -- department (id, depart_name)
-// taking user input this way prevents sequal injection attacks -- (something I learned/ comic of exploits of a mom)
-const addDepartment = () => {
-  return inquirer
-    .prompt([
-      {
-        type: "input",
-        name: "depart_name",
-        message: "What is the department you would like to add?",
-        validate: (answer) => {
-          if (answer !== "") {
-            return true;
-          }
-          return "Please enter a valid statement.";
-        },
-      },
-    ])
-    .then((answer) => {
-      let results = db.execute(
-        "insert into department (name) values (?)",
-        [answer.depart_name],
-        function (error, results) {
-          if (error) throw error;
-          console.log("Successfully added a department");
-          initPrompt();
-        }
-      );
-    });
-};
-// add Role -- roles table (id, title, salary)
-const addRole = () => {
-  return inquirer
-    .prompt([
-      {
-        type: "input",
-        name: "title",
-        message: "What the role you would like to add?",
-        validate: (answer) => {
-          if (answer !== "") {
-            return true;
-          }
-          return "please enter a valid name";
-        },
-      },
-      {
-        type: "input",
-        name: "title",
-        message: "What is the employee's title?",
-      },
-
-      {
-        type: "input",
-        name: "salary",
-        message: "What is the employee's salary?",
-      },
-      {
-        type: "input",
-        name: "department_id",
-        message: "What is the employee department ID?",
-      },
-    ])
-    .then((answers) => {
-      let results = db.execute(
-        "insert into roles (title, salary, department_id) values (?,?,?)",
-        [answers.id, answers.title, answers.salary, answers.department_id],
-
-        function (error, results) {
-          if (error) throw error;
-          console.table(results);
-          initPrompt();
-        }
-      );
-    });
-};
-// add employee -- employee table (id, first_name, last_name, role_id, manager_id)
-const addEmployee = () => {
-  return inquirer
-    .prompt([
-      {
-        type: "input",
-        name: "id",
-        message: "What is the new employee's first name?",
-      },
-      {
-        type: "input",
-        name: "last_name",
-        message: "What is the new employee's last name?",
-      },
-      {
-        type: "input",
-        name: "role_id",
-        message: "What is the new employee's role id?",
-      },
-      {
-        type: "input",
-        name: "manager_id",
-        message: "What is the new employee's manager id?",
-      },
-    ])
-    .then((answers) => {
-      let results = db.execute(
-        "insert into employee (first_name, last_name, role_id, manager_id) values (?,?,?,?)",
-        [
-          answers.first_name,
-          answers.last_name,
-          answers.role_id,
-          answers.manager_id,
-        ],
-
-        function (error, results) {
-          if (error) throw error;
-          console.table(results);
-          initPrompt();
-        }
-      );
-    });
-};
-
-// Remove an Employee
-const removeEmployee = () => {
-  return inquirer
-    .prompt({
-      type: "input",
-      name: "removeEmployeID",
-      message: "What is the id of the employee you would like to remove?",
-    })
-    .then((answers) => {
-      let results = db.query(
-        "delete from employee WHERE id = ?",
-        function (error, results) {
-          if (error) throw error;
-          console.table(results);
-          initPrompt();
-        }
-      );
-    });
-};
-
 // update an employee
+// SQL update code
+// UPDATE users SET email = 'freddy@gmail.com' WHERE id = 2;
 // const updateEmployee = () => {
 //   {
 //     type: "input",
 //     name: "removeEmployeID",
 //     message: "What is the id of the employee you would like to remove?",
 //   },
-
-// }
-
-// startQuestions();
