@@ -158,75 +158,74 @@ function showAllEmployees() {
 //   //   res.status(404).end();
 //   // });
 
-//   // DONE
 //   // add Department -- department (id, depart_name)
 //   // taking user input this way prevents sequal injection attacks -- (something I learned/ comic of exploits of a mom)
-//   const addDepartment = () => {
-//     return inquirer
-//       .prompt([
-//         {
-//           type: "input",
-//           name: "depart_name",
-//           message: "What is the department you would like to add?",
-//           validate: (answer) => {
-//             if (answer !== "") {
-//               return true;
-//             }
-//             return "Please enter a valid statement.";
-//           },
-//         },
-//       ])
-//       .then((answer) => {
-//         let results = db.execute(
-//           "insert into department (name) values (?)",
-//           [answer.depart_name],
-//           function (error, results) {
-//             if (error) throw error;
-//             console.log("Successfully added a department");
-//             initPrompt();
-//           }
-//         );
-//       });
-//   };
-//   // add Role -- roles table (id, title, salary)
-//   const addRole = () => {
-//     return inquirer
-//       .prompt([
-//         {
-//           type: "input",
-//           name: "title",
-//           message: "What is the employee's title?",
-//           validate: (answer) => {
-//             if (answer !== "") {
-//               return true;
-//             }
-//             return "Please enter a valid name.";
-//           },
-//         },
-//         {
-//           type: "input",
-//           name: "salary",
-//           message: "What is the employee's salary?",
-//         },
-//         {
-//           type: "input",
-//           name: "department_id",
-//           message: "What is the employee department ID?",
-//         },
-//       ])
-//       .then((answers) => {
-//         let results = db.execute(
-//           "insert into roles (title, salary, department_id) values (?,?,?)",
-//           [answers.title, answers.salary, answers.department_id],
-//           function (error, results) {
-//             if (error) throw error;
-//             console.table(results);
-//             console.log("The Employee role has been added!");
-//             initPrompt();
-//           }
-//         );
-//       });
-//   };
+const addDepartment = () => {
+  return inquirer
+    .prompt([
+      {
+        type: "input",
+        name: "depart_name",
+        message: "What is the department you would like to add?",
+        validate: (answer) => {
+          if (answer !== "") {
+            return true;
+          }
+          return "Please enter a valid statement.";
+        },
+      },
+    ])
+    .then((answer) => {
+      let results = db.execute(
+        "insert into department (name) values (?)",
+        [answer.depart_name],
+        function (error, results) {
+          if (error) throw error;
+          console.log("Successfully added a department");
+          initPrompt();
+        }
+      );
+    });
+};
+// add Role -- roles table (id, title, salary)
+const addRole = () => {
+  return inquirer
+    .prompt([
+      {
+        type: "input",
+        name: "title",
+        message: "What is the employee's title?",
+        validate: (answer) => {
+          if (answer !== "") {
+            return true;
+          }
+          return "Please enter a valid name.";
+        },
+      },
+      {
+        type: "input",
+        name: "salary",
+        message: "What is the employee's salary?",
+      },
+      {
+        type: "input",
+        name: "department_id",
+        message: "What is the employee department ID?",
+      },
+    ])
+    .then((answer) => {
+      let results = db.execute(
+        "insert into roles (title, salary, department_id) values (?,?,?)",
+        [answer.title, answer.salary, answer.department_id],
+        function (error, results) {
+          if (error) throw error;
+          console.table(results);
+          console.log("The Employee role has been added!");
+          initPrompt();
+        }
+      );
+    });
+};
 //   // add employee -- employee table (id, first_name, last_name, role_id, manager_id)
 //   const addEmployee = () => {
 //     return inquirer
