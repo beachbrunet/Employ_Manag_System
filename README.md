@@ -61,6 +61,8 @@ npm i console.table
 
 [w3Schools](https://www.w3schools.com/sql/sql_delete.asp),
 
+[MySQL Cheat Sheet](https://gist.github.com/bradtraversy/c831baaad44343cc945e76c2e30927b3),
+
 [Bobbie comic](https://www.explainxkcd.com/wiki/images/5/5f/exploits_of_a_mom.png)
 
 ## Heroku

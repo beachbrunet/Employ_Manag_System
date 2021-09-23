@@ -227,49 +227,49 @@ const addRole = () => {
     });
 };
 //   // add employee -- employee table (id, first_name, last_name, role_id, manager_id)
-//   const addEmployee = () => {
-//     return inquirer
-//       .prompt([
-//         {
-//           type: "input",
-//           name: "id",
-//           message: "What is the new employee's first name?",
-//         },
-//         {
-//           type: "input",
-//           name: "last_name",
-//           message: "What is the new employee's last name?",
-//         },
-//         {
-//           type: "input",
-//           name: "role_id",
-//           message: "What is the new employee's role id?",
-//         },
-//         {
-//           type: "input",
-//           name: "manager_id",
-//           message: "What is the new employee's manager id?",
-//         },
-//       ])
-//       .then((answers) => {
-//         let results = db.execute(
-//           "insert into employee (first_name, last_name, role_id, manager_id) values (?,?,?,?)",
-//           [
-//             answers.first_name,
-//             answers.last_name,
-//             answers.role_id,
-//             answers.manager_id,
-//           ],
+const addEmployee = () => {
+  return inquirer
+    .prompt([
+      {
+        type: "input",
+        name: "first_name",
+        message: "What is the new employee's first name?",
+      },
+      {
+        type: "input",
+        name: "last_name",
+        message: "What is the new employee's last name?",
+      },
+      {
+        type: "input",
+        name: "role_id",
+        message: "What is the new employee's role id?",
+      },
+      {
+        type: "input",
+        name: "manager_id",
+        message: "What is the new employee's manager id?",
+      },
+    ])
+    .then((answers) => {
+      let results = db.execute(
+        "insert into employee (first_name, last_name, role_id, manager_id) values (?,?,?,?)",
+        [
+          answers.first_name,
+          answers.last_name,
+          answers.role_id,
+          answers.manager_id,
+        ],
 
-//           function (error, results) {
-//             if (error) throw error;
-//             console.table(results);
-//             console.log("You have added a new employee!");
-//             initPrompt();
-//           }
-//         );
-//       });
-//   };
+        function (error, results) {
+          if (error) throw error;
+          console.table(results);
+          console.log("You have added a new employee!");
+          initPrompt();
+        }
+      );
+    });
+};
 
 //   // Remove an Employee
 //   const removeEmployee = () => {

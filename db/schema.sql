@@ -41,8 +41,8 @@ CREATE Table employee (
   first_name VARCHAR(30) NOT NULL,
   last_name VARCHAR(30) NOT NULL,
   role_id INTEGER,
-  department_id INT,
-  FOREIGN KEY (department_id) REFERENCES department(id) ON DELETE CASCADE,
+  department_id INT NOT NULL,
+  -- FOREIGN KEY (department_id) REFERENCES department(id) ON DELETE CASCADE,
   FOREIGN KEY (role_id) REFERENCES roles (id),
   manager_id INTEGER,
   FOREIGN KEY (manager_id) REFERENCES employee (id)
