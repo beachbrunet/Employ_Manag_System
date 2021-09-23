@@ -157,7 +157,7 @@ function showAllEmployees() {
 
 // add Department -- department (id, depart_name)
 // taking user input this way prevents sequal injection attacks -- (something I learned/ comic of exploits of a mom)
-const addDepart = () => {
+const addDepartment = () => {
   return inquirer
     .prompt([
       {
@@ -173,12 +173,13 @@ const addDepart = () => {
       },
     ])
     .then((answer) => {
-      let results = connection.query(
+      let results = db.execute(
         "insert into department (name) values (?)",
-        [answers.dept_name],
+        [answer.depart_name],
         function (error, results) {
           if (error) throw error;
           console.log("Successfully added a department");
+          initPrompt();
         }
       );
     });
@@ -210,7 +211,7 @@ const addEmployee = () => {
       },
     ])
     .then((answers) => {
-      let results = connection.query(
+      let results = db.execute(
         "insert into employee (first_name, last_name, role_id, manager_id) values (?,?,?,?)",
         [
           answers.first_name,
@@ -237,7 +238,7 @@ const removeEmployee = () => {
       message: "What is the id of the employee you would like to remove?",
     })
     .then((answers) => {
-      let results = connection.query(
+      let results = db.query(
         "delete from employee WHERE id = ?",
         function (error, results) {
           if (error) throw error;
