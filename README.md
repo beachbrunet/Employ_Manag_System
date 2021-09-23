@@ -59,6 +59,8 @@ npm i console.table
 
 [MDN](https://developer.mozilla.org/en-US/docs/Web/API/console/table)
 
+[Bobbie comic](https://www.explainxkcd.com/wiki/images/5/5f/exploits_of_a_mom.png)
+
 ## Heroku
 
 <!-- ----------------------- -->

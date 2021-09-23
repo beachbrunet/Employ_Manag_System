@@ -7,7 +7,7 @@
 //  or you can start researching npm packages now that could help you.
 
 // variables
-const fs = require('fs')
+const fs = require("fs");
 const inquirer = require("inquirer");
 const mysql = require("mysql2");
 // const something = placeholder;
@@ -39,7 +39,7 @@ console.log(`
                                            \______/                                
 `);
 
-// connect to db
+// connect to db via credentials
 const db = mysql.createConnection({
   host: "localhost",
   port: 3306,
@@ -49,9 +49,12 @@ const db = mysql.createConnection({
   password: "Iloveaxle1" /*(make sure to change this) */,
   database: "employee_db",
 });
+// connect to db
 db.connect((err) => {
   if (err) throw err;
   console.log("Successfully connected");
+
+  initPrompt();
 });
 
 // need a prompt for user
@@ -137,74 +140,23 @@ function runSelect(sql) {
   });
 }
 
-function showAllDepartments() {
-  runSelect("select * from department"),
-    function (error, result) {
-      if (error) throw error;
-    };
-}
-
-// function showAllDepartments() {
-//   db.query("select * from department", function (error, result) {
-//     if (error) throw error;
-//     console.table(res), startQuestions();
-//   });
-// }
-
 // function for viewing Depart
 function showAllDepartments() {
-  runSelect("select * from department"),
-    function (error, result) {
-      if (error) throw error;
-    };
+  runSelect("select * from department");
 }
 
 // function for viewing employees // employee (id, first_name, last_name, role_id, manager_id)
 function showAllEmployees() {
-  runSelect("select * from employee"),
-    function (error, results) {
-      if (error) throw error;
-      const worker = result.map((employee) => ({
-        value: employee.id,
-        name: employee.first_name + employee.last_name,
-      }));
-    };
+  runSelect("select * from employee");
 }
 
-// function for viewing roles // roles (title, salary, department_id)
-function showAllEmployeeRoles() {
-  runSelect("select * from roles"),
-    function (error, result) {
-      if (error) throw error;
-      const roles = result.map((roles) => ({
-        value: roles.id,
-        name: roles.title,
-      }));
-      // pull from employee?
-    };
-
-  // add fucntions for
-  // Add a Department - need prompt
-  // My Departments are: (id, depart_name) Sales, Engineering,Quaility Insurence, Finance, HR
-  // function addDepartment() {
-  //   runSelect("select * from department"),
-  //   function (error, results) {
-  //     if (error) throw error;
-  //   }
-  // };
-
-  // Add an Employee - need prompt
-
-  // Remove an Employee
-  // Update an Employee
-
-  // // Default response for any other request (Not Found)
-  // app.use((req, res) => {
-  //   res.status(404).end();
-  // });
-}
+// // Default response for any other request (Not Found)
+// app.use((req, res) => {
+//   res.status(404).end();
+// });
 
 // add Department -- department (id, depart_name)
+// taking user input this way prevents sequal injection attacks -- (something I learned/ comic of exploits of a mom)
 const addDepart = () => {
   return inquirer
     .prompt([
@@ -222,7 +174,7 @@ const addDepart = () => {
     ])
     .then((answer) => {
       let results = connection.query(
-        "INSERT INTO depertment SET dept_name = ?",
+        "insert into department (name) values (?)",
         [answers.dept_name],
         function (error, results) {
           if (error) throw error;
@@ -232,37 +184,54 @@ const addDepart = () => {
     });
 };
 
-// // writing promts
+// add employee -- employee (id, first_name, last_name, role_id, manager_id)
 const addEmployee = () => {
-  return inquirer.prompt([
-{
-  type: "input",
-  name: "first_name",
-  message: "What is the new employee's first name?",
-},
-{
-  type: "input",
-  name: "last_name",
-  message: "What is the new employee's last name?",
-},
-{
-  type: "input",
-  name: "role",
-  message: "What is the new employee's role?",
-  choices:[
-    "Sales",
-    "Engineering",
-    "Quaility Insurence",
-    "Finance",
-    "HR",
-  ]
-},
-{
-  type: "input",
-  name: "role_id",
-  message: "What is the new employee's manager id?",
-},
-  ]).then(answers => { let results = connection.query( "INSERT INTO employee SET first_name=?, last_name=?, rolle_id = ?, manager_id = ? ",
+  return inquirer
+    .prompt([
+      {
+        type: "input",
+        name: "first_name",
+        message: "What is the new employee's first name?",
+      },
+      {
+        type: "input",
+        name: "last_name",
+        message: "What is the new employee's last name?",
+      },
+      {
+        type: "input",
+        name: "role_id",
+        message: "What is the new employee's role id?",
+      },
+      {
+        type: "input",
+        name: "manager_id",
+        message: "What is the new employee's manager id?",
+      },
+    ])
+    .then((answers) => {
+      let results = connection.query(
+        "INSERT INTO employee SET first_name=?, last_name=?, rolle_id = ?, manager_id = ? ",
+        [
+          answers.first_name,
+          answers.last_name,
+          answers.role_id,
+          answers.manager_id,
+        ],
+
+        function (error, results) {
+          if (error) throw error;
+          console.table(results);
+          initPrompt();
+        }
+      );
+    });
+};
+
+// Add an Employee - need prompt
+
+// Remove an Employee
+// Update an Employee
 
 //title, salary, department_id
 // const addRole = () => {
