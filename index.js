@@ -262,37 +262,38 @@ const addEmployee = () => {
   name: "role_id",
   message: "What is the new employee's manager id?",
 },
+  ]).then(answers => { let results = connection.query( "INSERT INTO employee SET first_name=?, last_name=?, rolle_id = ?, manager_id = ? ",
 
-// // title, salary, department_id
-const addRole = () => {
-  return inquirer.prompt([
-  {
-  type: "input",
-  name: "title",
-  message: "What the role you would like to add?",
-  validate: answer => {
-    if (answer!==""){
-    return true;
-     }
-      return "please enter a valid name";
-    }
-  },
-{
-    type: "input",
-    name: "title",
-    message: "What is the employee's title?",
-},
+//title, salary, department_id
+// const addRole = () => {
+//   return inquirer.prompt([
+//   {
+//   type: "input",
+//   name: "title",
+//   message: "What the role you would like to add?",
+//   validate: answer => {
+//     if (answer!==""){
+//     return true;
+//      }
+//       return "please enter a valid name";
+//     }
+//   },
+// {
+//     type: "input",
+//     name: "title",
+//     message: "What is the employee's title?",
+// },
 
-{
-  type: "input",
-  name: "salary",
-  message: "What is the employee's salary?",
-},
-{
-  type: "input",
-  name: "department_id",
-  message: "What is the employee department ID?",
-},
+// {
+//   type: "input",
+//   name: "salary",
+//   message: "What is the employee's salary?",
+// },
+// {
+//   type: "input",
+//   name: "department_id",
+//   message: "What is the employee department ID?",
+// },
 
 // // update employee
 
