@@ -26,7 +26,6 @@ CREATE Table department(
   name VARCHAR(30) NOT NULL
 );
 --
---need decminal
 CREATE Table roles (
   id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   title VARCHAR(30) NOT NULL,
@@ -38,7 +37,7 @@ CREATE Table roles (
 --
 --
 CREATE Table employee (
-  id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  id INTE AUTO_INCREMENT PRIMARY KEY,
   first_name VARCHAR(30) NOT NULL,
   last_name VARCHAR(30) NOT NULL,
   role_id INTEGER,
