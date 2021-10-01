@@ -58,48 +58,34 @@ THEN I am prompted to select an employee to update and their new role and this i
 
 <!-- ----------------------- -->
 
-- [Mongoose](https://www.npmjs.com/package/mongoose)<br />
-  command-line: `npm i mongoose`
+- [Node MySQL2](https://www.npmjs.com/package/mysql2)<br />
+  command-line: `npm i mysql2`
 
-- [Morgan](https://www.npmjs.com/package/morgan)<br />
-  command-line: `npm i morgan`
+- [Inquierer.js](https://www.npmjs.com/package/inquirer)<br />
+  command-line: `npm i inquirer`
 
-- [nodemon](https://www.npmjs.com/package/nodemon)<br />
-  command-line: `npm i nodemon`
-
-[MongoDB - addFields (aggregation)](https://docs.mongodb.com/manual/reference/operator/aggregation/addFields/)
-
-[MongoDB - sumOperator](https://docs.mongodb.com/manual/reference/operator/aggregation/sum/)
-
-[MongoDB - aggregateFunctions](https://mongoosejs.com/docs/api.html#aggregate_Aggregate)
+- [console.table](https://www.npmjs.com/package/console.table)<br />
+  command-line: `npm i console.table`
 
 ## Helpful Links
 
-- [NoSQL](https://en.wikipedia.org/wiki/NoSQL)
-- [MongoDB Website](https://www.mongodb.com/)
-- [Robo 3T Website](https://robomongo.org/download)
-- [MongoJS Documentation](https://www.npmjs.com/package/mongojs)
-- [Mongoose Documentation](http://mongoosejs.com/docs/guide.html)
-- [routes on Node.js and MongoDB](https://www.geeksforgeeks.org/restfull-routes-on-node-js-and-mongodb/)
+- [MDN](https://developer.mozilla.org/en-US/docs/Web/API/console/table),
+
+- [w3Schools](https://www.w3schools.com/sql/sql_delete.asp),
+
+- [MySQL Cheat Sheet](https://gist.github.com/bradtraversy/c831baaad44343cc945e76c2e30927b3),
+
+- [Bobbie comic](https://www.explainxkcd.com/wiki/images/5/5f/exploits_of_a_mom.png)
 
 ## Heroku
 
 <!-- ----------------------- -->
 
-[Heroku](https://something.herokuapp.com)
-
-## Application
-
-<!-- ----------------------- -->
-
-URL to the github repo ()
+[Heroku]()
 
 ## Contributions and Contact Information
 
 <!-- ----------------------- -->
 
-```
 Catherine Cox
-
 ccox.034@gmail.com
-```
