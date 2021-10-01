@@ -272,26 +272,26 @@ const addEmployee = () => {
 };
 
 //   // Remove an Employee
-//   const removeEmployee = () => {
-//     return inquirer
-//       .prompt({
-//         type: "input",
-//         name: "removeEmployeID",
-//         message: "What is the id of the employee you would like to remove?",
-//       })
-//       .then((answers) => {
-//         let results = db.query(
-//           "delete from employee WHERE id = ?",
-//           function (error, results) {
-//             if (error) throw error;
-//             console.table(results);
-//             console.log("Deleted the employee :(");
-//             initPrompt();
-//           }
-//         );
-//       });
-//   };
-// }
+const removeEmployee = () => {
+  return inquirer
+    .prompt({
+      type: "input",
+      name: "removeEmployeID",
+      message: "What is the id of the employee you would like to remove?",
+    })
+    .then((answers) => {
+      let results = db.query(
+        "delete from employee WHERE id = ?",
+        function (error, results) {
+          if (error) throw error;
+          console.table(results);
+          console.log("Deleted the employee :(");
+          initPrompt();
+        }
+      );
+    });
+};
+
 // // update an employee
 // // SQL update code
 // // UPDATE users SET email = 'freddy@gmail.com' WHERE id = 2;
