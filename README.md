@@ -44,36 +44,62 @@ THEN I am prompted to select an employee to update and their new role and this i
 
 ![Screen Shot]()
 
-## Resources
+## Technologies
 
 <!-- ----------------------- -->
 
-[Node MySQL2](https://www.npmjs.com/package/mysql2),
-npm i mysql2
+- Express
+- Mongo DB
+- Mongoose
+- Morgan
+- Node.js
 
-[Inquierer.js](https://www.npmjs.com/package/inquirer),
-npm i inquirer
+## Resources and Dependancies
 
-[console.table](https://www.npmjs.com/package/console.table),
-npm i console.table
+<!-- ----------------------- -->
 
-[MDN](https://developer.mozilla.org/en-US/docs/Web/API/console/table),
+- [Mongoose](https://www.npmjs.com/package/mongoose)<br />
+  command-line: `npm i mongoose`
 
-[w3Schools](https://www.w3schools.com/sql/sql_delete.asp),
+- [Morgan](https://www.npmjs.com/package/morgan)<br />
+  command-line: `npm i morgan`
 
-[MySQL Cheat Sheet](https://gist.github.com/bradtraversy/c831baaad44343cc945e76c2e30927b3),
+- [nodemon](https://www.npmjs.com/package/nodemon)<br />
+  command-line: `npm i nodemon`
 
-[Bobbie comic](https://www.explainxkcd.com/wiki/images/5/5f/exploits_of_a_mom.png)
+[MongoDB - addFields (aggregation)](https://docs.mongodb.com/manual/reference/operator/aggregation/addFields/)
+
+[MongoDB - sumOperator](https://docs.mongodb.com/manual/reference/operator/aggregation/sum/)
+
+[MongoDB - aggregateFunctions](https://mongoosejs.com/docs/api.html#aggregate_Aggregate)
+
+## Helpful Links
+
+- [NoSQL](https://en.wikipedia.org/wiki/NoSQL)
+- [MongoDB Website](https://www.mongodb.com/)
+- [Robo 3T Website](https://robomongo.org/download)
+- [MongoJS Documentation](https://www.npmjs.com/package/mongojs)
+- [Mongoose Documentation](http://mongoosejs.com/docs/guide.html)
+- [routes on Node.js and MongoDB](https://www.geeksforgeeks.org/restfull-routes-on-node-js-and-mongodb/)
 
 ## Heroku
 
 <!-- ----------------------- -->
 
-[Heroku]()
+[Heroku](https://something.herokuapp.com)
+
+## Application
+
+<!-- ----------------------- -->
+
+URL to the github repo ()
 
 ## Contributions and Contact Information
 
 <!-- ----------------------- -->
 
+```
 Catherine Cox
+
 ccox.034@gmail.com
+```
