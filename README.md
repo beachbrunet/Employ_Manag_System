@@ -42,7 +42,9 @@ THEN I am prompted to select an employee to update and their new role and this i
 
 <!-- ----------------------- -->
 
-![Screen Shot]()
+![Screen Shot](./assets/ScreenShot.png)<br />
+
+![Demo](./assets/Demo.mov)
 
 ## Technologies
 

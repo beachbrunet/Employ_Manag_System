@@ -1,5 +1,3 @@
--- Need values
---
 -- employee: id, first_name varchar(30), LAST_NAME varchar(30), role_id INT, manager_id INT
 -- table 1 depart: id and name varchar(30)
 INSERT INTO
@@ -11,8 +9,6 @@ VALUES
   ("4", "Finance"),
   ("5", "HR");
 --
-  --
-  --
   -- table 2 -- role: id, title varchar(30), salary DECIMAL, depart-id.
 INSERT INTO
   roles (title, salary, department_id)
@@ -23,15 +19,12 @@ VALUES
   ("QA", 60000, 3),
   ("Programer", 55000, 2);
 --
-  --
-  --
-  --
 INSERT INTO
   employee (id, first_name, last_name, role_id, manager_id)
 VALUES
-  (1, 'Catherine', 'Cox', 1, NULL),(2, 'Turk', 'Turkleton', 4, NULL);
+  (1, 'Catherine', 'Cox', 1, NULL),
+  (2, 'Turk', 'Turkleton', 4, NULL);
 --
-  --
 INSERT INTO
   employee (first_name, last_name, role_id, manager_id)
 VALUES
