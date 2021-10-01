@@ -271,7 +271,7 @@ const addEmployee = () => {
     });
 };
 
-//   // Remove an Employee
+//   // Remove an Employee (tried bonus but does not work, same goes for the delete.sql)
 const removeEmployee = () => {
   return inquirer
     .prompt({
@@ -291,7 +291,7 @@ const removeEmployee = () => {
       );
     });
 };
-
+// also attempted the bonus here but didnt have time
 // // update an employee
 // // SQL update code
 // // UPDATE users SET email = 'freddy@gmail.com' WHERE id = 2;
