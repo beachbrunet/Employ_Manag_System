@@ -71,23 +71,17 @@ THEN I am prompted to select an employee to update and their new role and this i
 
 ## Helpful Links
 
-- [MDN](https://developer.mozilla.org/en-US/docs/Web/API/console/table),
+- [MDN](https://developer.mozilla.org/en-US/docs/Web/API/console/table)
 
-- [w3Schools](https://www.w3schools.com/sql/sql_delete.asp),
+- [w3Schools](https://www.w3schools.com/sql/sql_delete.asp)
 
-- [MySQL Cheat Sheet](https://gist.github.com/bradtraversy/c831baaad44343cc945e76c2e30927b3),
+- [MySQL Cheat Sheet](https://gist.github.com/bradtraversy/c831baaad44343cc945e76c2e30927b3)
 
 - [Bobbie comic](https://www.explainxkcd.com/wiki/images/5/5f/exploits_of_a_mom.png)
-
-## Heroku
-
-<!-- ----------------------- -->
-
-[Heroku]()
 
 ## Contributions and Contact Information
 
 <!-- ----------------------- -->
 
-Catherine Cox
+Catherine Cox<br />
 ccox.034@gmail.com
